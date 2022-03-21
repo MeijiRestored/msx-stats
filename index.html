@@ -38,11 +38,31 @@
       </div>
       <hr />
       <div id="stats" style="display: none">
-        <div id="gamesPlayed" class="roundedBoxBlue"></div>
-        <div id="difficulties" class="roundedBoxGreen"></div>
-        <div id="lifePlaytime" class="roundedBoxPurple"></div>
-        <div id="averagePlaytime" class="roundedBoxOrange"></div>
-        <div id="mouseClicks" class="roundedBoxRed"></div>
+        <div
+          id="gamesPlayed"
+          class="roundedBox"
+          style="border: 4px solid #2f1ece"
+        ></div>
+        <div
+          id="difficulties"
+          class="roundedBox"
+          style="border: 4px solid #1ece53"
+        ></div>
+        <div
+          id="lifePlaytime"
+          class="roundedBox"
+          style="border: 4px solid #441b91"
+        ></div>
+        <div
+          id="averagePlaytime"
+          class="roundedBox"
+          style="border: 4px solid #e95f04"
+        ></div>
+        <div
+          id="mouseClicks"
+          class="roundedBox"
+          style="border: 4px solid #e91304"
+        ></div>
       </div>
     </div>
 
@@ -52,12 +72,13 @@
           Source code available on
           <a href="https://github.com/32Vache/msx-stats" target="_blank"
             >GitHub</a
-          >
+          >. <button class="btn-toggle">Toggle Dark Mode</button>
         </i>
       </font>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/dark.js"></script>
   </body>
 </html>
