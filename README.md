@@ -3,6 +3,7 @@
 ![Release](https://img.shields.io/github/v/release/32Vache/msx-stats) ![Commit activity](https://img.shields.io/github/commit-activity/m/32Vache/msx-stats) ![Repo size](https://img.shields.io/github/repo-size/32Vache/msx-stats) &nbsp; <img src="https://raw.githubusercontent.com/32Vache/emc-map-colors/main/assets/ua.svg" width="20px">
 
 A website to visualize [Minesweeper X](http://www.curtisbright.com/msx/)'s ``stats.txt`` file.
+
 ![Stats viewer](https://raw.githubusercontent.com/32Vache/msx-stats/main/assets/main.png)
 
 ## Usage
@@ -21,6 +22,6 @@ Open Minesweeper X, go in the Extras tab, open Auto Options
 
 From this menu, check 'All' under Statistics (in orange). Do the same for every game mode (in red), as the statistics setting applies per game mode.
 
-[Stats file](https://raw.githubusercontent.com/32Vache/msx-stats/main/assets/stats-file.png)
+![Stats file](https://raw.githubusercontent.com/32Vache/msx-stats/main/assets/stats-file.png)
 
 As you play minesweeper, Minesweeper X will fill in the ``stats.txt`` file, located in the same folder as the game executabe, with various stats, that you can read here!
