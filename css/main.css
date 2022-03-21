@@ -1,6 +1,6 @@
 @font-face {
   font-family: MC;
-  src: url("MC.otf");
+  src: url("https://raw.githubusercontent.com/32Vache/msx-stats/main/css/mc.otf");
 }
 
 body {
