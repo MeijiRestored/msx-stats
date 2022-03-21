@@ -1,0 +1,98 @@
+@font-face {
+  font-family: MC;
+  src: url("MC.otf");
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  background: #eeeeee;
+}
+
+h1 {
+  font-family: MC, sans-serif;
+}
+
+.greyBox {
+  text-align: center;
+  display: inline-block;
+  border-radius: 0px;
+  background: #888888;
+  border: 2px solid #000000;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  margin: 4px;
+}
+
+#stats {
+  width: 100%;
+  display: flex;
+}
+
+.roundedBoxBlue {
+  text-align: center;
+  display: inline-block;
+  border-radius: 25px;
+  background: #dddddd;
+  border: 4px solid #2f1ece;
+  padding: 16px;
+  width: 100px;
+  height: 80px;
+  margin: 6px;
+}
+
+.roundedBoxGreen {
+  text-align: center;
+  display: inline-block;
+  border-radius: 25px;
+  background: #dddddd;
+  border: 4px solid #1ece53;
+  padding: 16px;
+  width: 110px;
+  height: 80px;
+  margin: 6px;
+}
+
+.roundedBoxPurple {
+  text-align: center;
+  display: inline-block;
+  border-radius: 25px;
+  background: #dddddd;
+  border: 4px solid #441b91;
+  padding: 16px;
+  width: 110px;
+  height: 80px;
+  margin: 6px;
+}
+
+.roundedBoxOrange {
+  text-align: center;
+  display: inline-block;
+  border-radius: 25px;
+  background: #dddddd;
+  border: 4px solid #e95f04;
+  padding: 16px;
+  width: 110px;
+  height: 80px;
+  margin: 6px;
+}
+
+.roundedBoxRed {
+  text-align: center;
+  display: inline-block;
+  border-radius: 25px;
+  background: #dddddd;
+  border: 4px solid #e91304;
+  padding: 16px;
+  width: 110px;
+  height: 80px;
+  margin: 6px;
+}
+
+.footer {
+  position: absolute;
+  padding: 2px;
+  left: 0px;
+  bottom: 0px;
+  background: #77777777;
+}
