@@ -135,7 +135,7 @@ h1 {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   padding: 2px;
   left: 0px;
   bottom: 0px;
