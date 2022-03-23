@@ -60,6 +60,7 @@ function readFile(statsFile) {
       var Lclicks = 0;
       var Mclicks = 0;
       var Rclicks = 0;
+      var wins = 0;
 
       for (let i in stats) {
         // Split stats by tab char (U+0009)
@@ -83,10 +84,20 @@ function readFile(statsFile) {
         Lclicks += parseInt(game[9]);
         Mclicks += parseInt(game[10]);
         Rclicks += parseInt(game[11]);
+
+        // Check if game was won
+        // Whether a game is won or lost is not told in the stats, but can be spotted with the 3BV and solved stat
+        var BBBV = parseInt(game[5]);
+        var solved = parseInt(game[6]);
+
+        if (BBBV == solved) {
+          wins += 1;
+        }
       }
 
-      // Calculate average game time.
+      // Extra stats
       var avgTime = playtime / totalGames;
+      var winRate = ((wins / totalGames) * 100).toFixed(2);
 
       // Results are ready, print to user.
       $("#outputSection").html("<h3>Stats loaded!</h3>");
@@ -130,6 +141,12 @@ function readFile(statsFile) {
           Mclicks +
           Rclicks
         ).toString()}</b><font size="2"> total</font>`
+      );
+      $("#gamesWon").html(
+        `Total games won<br><b><font size="7">${wins.toString()}</font></b>`
+      );
+      $("#winRate").html(
+        `Win Rate<br><br><b><font size="6">${winRate.toString()} %</font></b>`
       );
     };
   })(statsFile);

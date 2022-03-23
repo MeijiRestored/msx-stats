@@ -10,6 +10,8 @@ if (currentTheme == "dark") {
   document.getElementById("lifePlaytime").classList.toggle("dark-theme");
   document.getElementById("averagePlaytime").classList.toggle("dark-theme");
   document.getElementById("mouseClicks").classList.toggle("dark-theme");
+  document.getElementById("gamesWon").classList.toggle("dark-theme");
+  document.getElementById("winRate").classList.toggle("dark-theme");
 } else if (currentTheme == "light") {
   document.body.classList.toggle("light-theme");
   document.getElementById("inputSection").classList.toggle("light-theme");
@@ -18,6 +20,8 @@ if (currentTheme == "dark") {
   document.getElementById("lifePlaytime").classList.toggle("light-theme");
   document.getElementById("averagePlaytime").classList.toggle("light-theme");
   document.getElementById("mouseClicks").classList.toggle("light-theme");
+  document.getElementById("gamesWon").classList.toggle("light-theme");
+  document.getElementById("winRate").classList.toggle("light-theme");
 }
 
 btn.addEventListener("click", function () {
@@ -29,6 +33,8 @@ btn.addEventListener("click", function () {
     document.getElementById("lifePlaytime").classList.toggle("light-theme");
     document.getElementById("averagePlaytime").classList.toggle("light-theme");
     document.getElementById("mouseClicks").classList.toggle("light-theme");
+    document.getElementById("gamesWon").classList.toggle("light-theme");
+    document.getElementById("winRate").classList.toggle("light-theme");
     var theme = document.body.classList.contains("light-theme")
       ? "light"
       : "dark";
@@ -40,6 +46,8 @@ btn.addEventListener("click", function () {
     document.getElementById("lifePlaytime").classList.toggle("dark-theme");
     document.getElementById("averagePlaytime").classList.toggle("dark-theme");
     document.getElementById("mouseClicks").classList.toggle("dark-theme");
+    document.getElementById("gamesWon").classList.toggle("dark-theme");
+    document.getElementById("winRate").classList.toggle("dark-theme");
     var theme = document.body.classList.contains("dark-theme")
       ? "dark"
       : "light";
