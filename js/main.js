@@ -61,20 +61,15 @@ function readFile(statsFile) {
       var Mclicks = 0;
       var Rclicks = 0;
       var wins = 0;
+      var winStreak = 0;
+      var bestWS = 0;
+      var begPB = 9999;
+      var intPB = 9999;
+      var expPB = 9999;
 
       for (let i in stats) {
         // Split stats by tab char (U+0009)
         var game = stats[i].split("\t");
-        // Check played difficulty
-        if (game[0] === "Beg") {
-          diffBeg += 1;
-        } else if (game[0] === "Int") {
-          diffInt += 1;
-        } else if (game[0] === "Exp") {
-          diffExp += 1;
-        } else if (game[0] === "Cus") {
-          diffCus += 1;
-        }
 
         // Add playtime
         var gamePlaytime = parseFloat(game[4]);
@@ -90,14 +85,58 @@ function readFile(statsFile) {
         var BBBV = parseInt(game[5]);
         var solved = parseInt(game[6]);
 
+        // Also calculate Win Streak
         if (BBBV == solved) {
           wins += 1;
+          winStreak += 1;
+          bestWS = winStreak > bestWS ? winStreak : bestWS;
+        } else {
+          winStreak = 0;
+        }
+
+        // Check played difficulty
+        if (game[0] === "Beg") {
+          diffBeg += 1;
+          if (BBBV == solved) {
+            begPB = gamePlaytime < begPB ? gamePlaytime : begPB;
+          }
+        } else if (game[0] === "Int") {
+          diffInt += 1;
+          if (BBBV == solved) {
+            intPB = gamePlaytime < intPB ? gamePlaytime : intPB;
+          }
+        } else if (game[0] === "Exp") {
+          diffExp += 1;
+          if (BBBV == solved) {
+            expPB = gamePlaytime < expPB ? gamePlaytime : expPB;
+          }
+        } else if (game[0] === "Cus") {
+          diffCus += 1;
         }
       }
 
       // Extra stats
       var avgTime = playtime / totalGames;
       var winRate = ((wins / totalGames) * 100).toFixed(2);
+
+      // Check if each difficulty has at least been won once (for PB stat) and pre-convert to string
+      if (begPB == 9999) {
+        begPB = "None";
+      } else {
+        begPB = `${begPB.toString()}s`;
+      }
+
+      if (intPB == 9999) {
+        intPB = "None";
+      } else {
+        intPB = `${intPB.toString()}s`;
+      }
+
+      if (expPB == 9999) {
+        expPB = "None";
+      } else {
+        expPB = `${expPB.toString()}s`;
+      }
 
       // Results are ready, print to user.
       $("#outputSection").html("<h3>Stats loaded!</h3>");
@@ -133,7 +172,9 @@ function readFile(statsFile) {
         secondsAvg = parseInt(durationAvg / 1000);
 
       $("#averagePlaytime").html(
-        `Average time per game<br><br><b>${secondsAvg.toString()}.${millisecondsAvg.toString()}</b><font size="2"> seconds</font>`
+        `Average time per game<br><br><b>${secondsAvg.toString()}.${millisecondsAvg
+          .toString()
+          .slice(0, 2)}</b><font size="2"> seconds</font>`
       );
       $("#mouseClicks").html(
         `Mouse Clicks<br><b>${Lclicks.toString()}</b><font size="2"> left</font><br><b>${Mclicks.toString()}</b><font size="2"> middle</font><br><b>${Rclicks.toString()}</b><font size="2"> right</font><br><b>${(
@@ -147,6 +188,12 @@ function readFile(statsFile) {
       );
       $("#winRate").html(
         `Win Rate<br><br><b><font size="6">${winRate.toString()} %</font></b>`
+      );
+      $("#personalBest").html(
+        `Best Times (Win)<br><font size="2">Beg.: </font><font color="#33ff00">${begPB}</font><br><font size="2">Int.: </font><font color="#ccee00">${intPB}</font><br><font size="2">Exp.: </font><font color="#ff1100">${expPB}</font>`
+      );
+      $("#winStreak").html(
+        `Best Win Streak<br><b><font size="7">${bestWS.toString()}</font></b>`
       );
     };
   })(statsFile);
