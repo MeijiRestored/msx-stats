@@ -1,5 +1,6 @@
 $(document).ready(function () {
   loadEvent();
+  $(".btn-toggle").toggle();
 });
 
 /**
