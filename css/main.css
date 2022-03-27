@@ -141,3 +141,8 @@ h1 {
   bottom: 0px;
   background: #77777777;
 }
+
+#chart {
+  display: block;
+  box-sizing: border-box;
+}

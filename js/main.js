@@ -67,6 +67,9 @@ function readFile(statsFile) {
       var begPB = 9999;
       var intPB = 9999;
       var expPB = 9999;
+      var playHours = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      ];
 
       for (let i in stats) {
         // Split stats by tab char (U+0009)
@@ -114,6 +117,14 @@ function readFile(statsFile) {
         } else if (game[0] === "Cus") {
           diffCus += 1;
         }
+
+        // Check game hour
+        var hour = game[13].slice(0, 2);
+        hour = parseInt(hour);
+        if (game[13].slice(9, 11) == "PM") {
+          hour += 12;
+        }
+        playHours[hour] += 1;
       }
 
       // Extra stats
@@ -196,6 +207,110 @@ function readFile(statsFile) {
       $("#winStreak").html(
         `Best Win Streak<br><b><font size="7">${bestWS.toString()}</font></b>`
       );
+
+      // Draw bar chart of hours
+      $("#chart").show();
+      const chartlabels = [
+        "0h",
+        "1h",
+        "2h",
+        "3h",
+        "4h",
+        "5h",
+        "6h",
+        "7h",
+        "8h",
+        "9h",
+        "10h",
+        "11h",
+        "12h",
+        "13h",
+        "14h",
+        "15h",
+        "16h",
+        "17h",
+        "18h",
+        "19h",
+        "20h",
+        "21h",
+        "22h",
+        "23h",
+      ];
+      const chartdata = {
+        labels: chartlabels,
+        datasets: [
+          {
+            label: "Games played at hour of day",
+            data: playHours,
+            backgroundColor: [
+              "rgba(255, 33, 11, 0.2)",
+              "rgba(255, 99, 11, 0.2)",
+              "rgba(255, 160, 11, 0.2)",
+              "rgba(255, 210, 11, 0.2)",
+              "rgba(210, 255, 11, 0.2)",
+              "rgba(160, 255, 11, 0.2)",
+              "rgba(99, 255, 11, 0.2)",
+              "rgba(33, 255, 11, 0.2)",
+              "rgba(11, 255, 33, 0.2)",
+              "rgba(11, 255, 99, 0.2)",
+              "rgba(11, 255, 160, 0.2)",
+              "rgba(11, 255, 210, 0.2)",
+              "rgba(11, 210, 255, 0.2)",
+              "rgba(11, 160, 255, 0.2)",
+              "rgba(11, 99, 255, 0.2)",
+              "rgba(11, 33, 255, 0.2)",
+              "rgba(33, 11, 255, 0.2)",
+              "rgba(99, 11, 255, 0.2)",
+              "rgba(160, 11, 255, 0.2)",
+              "rgba(210, 11, 255, 0.2)",
+              "rgba(255, 11, 210, 0.2)",
+              "rgba(255, 11, 160, 0.2)",
+              "rgba(255, 11, 99, 0.2)",
+              "rgba(255, 11, 33, 0.2)",
+            ],
+            borderColor: [
+              "rgb(255, 33, 11)",
+              "rgb(255, 99, 11)",
+              "rgb(255, 160, 11)",
+              "rgb(255, 210, 11)",
+              "rgb(210, 255, 11)",
+              "rgb(160, 255, 11)",
+              "rgb(99, 255, 11)",
+              "rgb(33, 255, 11)",
+              "rgb(11, 255, 33)",
+              "rgb(11, 255, 99)",
+              "rgb(11, 255, 160)",
+              "rgb(11, 255, 210)",
+              "rgb(11, 210, 255)",
+              "rgb(11, 160, 255)",
+              "rgb(11, 99, 255)",
+              "rgb(11, 33, 255)",
+              "rgb(33, 11, 255)",
+              "rgb(99, 11, 255)",
+              "rgb(160, 11, 255)",
+              "rgb(210, 11, 255)",
+              "rgb(255, 11, 210)",
+              "rgb(255, 11, 160)",
+              "rgb(255, 11, 99)",
+              "rgb(255, 11, 33)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      const chartconfig = {
+        type: "bar",
+        data: chartdata,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+      const chart = new Chart(document.getElementById("chart"), chartconfig);
     };
   })(statsFile);
   reader.readAsBinaryString(statsFile);
