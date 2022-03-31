@@ -121,8 +121,14 @@ function readFile(statsFile) {
         // Check game hour
         var hour = game[13].slice(0, 2);
         hour = parseInt(hour);
-        if (game[13].slice(9, 11) == "PM") {
-          hour += 12;
+        if (hour === 12) {
+          if (game[13].slice(9, 11) == "AM") {
+           hour += -12;
+          }
+         } else {
+          if (game[13].slice(9, 11) == "PM") {
+           hour += 12;
+         }
         }
         playHours[hour] += 1;
       }
