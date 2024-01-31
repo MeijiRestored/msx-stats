@@ -205,7 +205,7 @@ function readFile(statsFile) {
         `Total games won<br><b><font size="7">${wins.toString()}</font></b>`
       );
       $("#winRate").html(
-        `Win Rate<br><br><b><font size="6">${winRate.toString()} %</font></b>`
+        `Win Rate<br><br><b><font size="5">${winRate.toString()} %</font></b>`
       );
       $("#personalBest").html(
         `Best Times (Win)<br><font size="2">Beg.: </font><font color="#33ff00">${begPB}</font><br><font size="2">Int.: </font><font color="#ccee00">${intPB}</font><br><font size="2">Exp.: </font><font color="#ff1100">${expPB}</font>`
